@@ -9,6 +9,7 @@ import Footer from "./component/common/Footer/Footer";
 import About from "./component/common/About/About";
 import Blog from "./component/common/Blog/Blog";
 import ContactUS from "./component/common/ContactUS/ContactUS";
+import Products from "./component/Home/Products";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="about" element={<About></About>}></Route>
           <Route path="blog" element={<Blog></Blog>}></Route>
           <Route path="contact" element={<ContactUS></ContactUS>}></Route>
+          <Route path="products" element={<Products></Products>}></Route>
         </Routes>
         <Footer />
         <ToastContainer />
