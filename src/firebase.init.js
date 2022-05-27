@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyCHIR9aKIInfh5mTRM_QWoV84u_N2Funwk",
-  authDomain: "handicraft-inventory-manage.firebaseapp.com",
-  projectId: "handicraft-inventory-manage",
-  storageBucket: "handicraft-inventory-manage.appspot.com",
-  messagingSenderId: "428666418573",
-  appId: "1:428666418573:web:f55a336df74986c940b9c4",
+  apiKey: process.env.REACT_API_KEY,
+  authDomain: process.env.REACT_AUTH_DOMAIN,
+  projectId: process.env.REACT_PROJECT_ID,
+  storageBucket: process.env.REACT_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_ID,
 };
 
 // Initialize Firebase

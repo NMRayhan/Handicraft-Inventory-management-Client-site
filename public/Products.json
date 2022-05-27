@@ -1,0 +1,56 @@
+[
+  {
+    "_id": 1,
+    "name": "Rectangle Handicraft Basket",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/3RZ0PcD/product-1.png",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  },
+  {
+    "_id": 2,
+    "name": "Round Mini Basket without handle",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/c2SFKz2/product-2.png",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  },
+  {
+    "_id": 3,
+    "name": "Round Mini Basket with handle",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/RcGC7Tj/product-3.png",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  },
+  {
+    "_id": 4,
+    "name": "Big Size Beautiful Basket",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/1XqYfPd/product-6.png",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  },
+  {
+    "_id": 5,
+    "name": "Yellow Color Rounded Basket",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/xzWdChJ/product-7.png",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  },
+  {
+    "_id": 6,
+    "name": "Leather Wallet by Hand Maid",
+    "description": "Large Rectangular Wicker floor basket with Braided handles Handwoven from water hyacinth Sturdy sides Four thick Woven handles to help with transporting",
+    "img": "https://i.ibb.co/QmJdN1T/product-5.jpg",
+    "price": 200,
+    "stock": 200,
+    "min_Order": 100
+  }
+]
