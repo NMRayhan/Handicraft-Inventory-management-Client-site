@@ -6,17 +6,14 @@ import Spinner from "../common/Spinner";
 
 const RequireAuth = ({ children }) => {
   let location = useLocation();
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   if (loading) {
     return <Spinner />;
   }
 
   if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-  if (error) {
-    console.log(error);
+    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
 
   return children;

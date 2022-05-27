@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,19 +22,20 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="about" element={<About></About>}></Route>
-          <Route path="blog" element={<Blog></Blog>}></Route>
-          <Route path="contact" element={<ContactUS></ContactUS>}></Route>
-          <Route path="products" element={<Products></Products>}></Route>
-          <Route path="purchase/:_id" 
+          <Route path="/home" element={<Home></Home>}></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/blog" element={<Blog></Blog>}></Route>
+          <Route path="/contact" element={<ContactUS></ContactUS>}></Route>
+          <Route path="/products" element={<Products></Products>}></Route>
+          <Route path="/purchase/:_id" 
             element={
               <RequireAuth>
                 <Purchase></Purchase>
               </RequireAuth>
             }
           ></Route>
-          <Route path="login" element={<Login></Login>}></Route>
-          <Route path="registration" element={<Registration></Registration>}></Route>
+          <Route path="/register" element={<Registration></Registration>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
           <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
         <Footer />

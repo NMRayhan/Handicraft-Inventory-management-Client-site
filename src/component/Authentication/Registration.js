@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -8,6 +8,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   // use form hook
@@ -27,16 +28,20 @@ const Registration = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
+
   if (loading || updating) {
     return <Spinner />;
   }
-  if (errors || error1 || error2) {
-    console.log(errors || error1 || error2);
+
+  if (error1 || error2) {
+    toast.error(error1.message || error2.message);
   }
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
   console.log(user);
   const onSubmit = async (data) => {
     const displayName = data.name;
@@ -92,9 +97,6 @@ const Registration = () => {
                     maxLength: 12,
                   })}
                 />
-                <label className="label">
-                  <span className="label-text-alt">Error Showing Alt</span>
-                </label>
               </div>
 
               <button className="btn btn-primary w-4/12 mt-5" type="submit">

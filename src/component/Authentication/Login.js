@@ -1,41 +1,42 @@
-import React from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Spinner from "../common/Spinner";
+import ForgotPass from "./ForgotPass";
 import SocialAuthentication from "./SocialAuthentication";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = async (data) => {
-    const email = data.email;
-    const password = data.password;
-    await signInWithEmailAndPassword(email, password);
-  };
 
   //   react router dom
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    const email = data.email;
+    const password = data.password;
+    await signInWithEmailAndPassword(email, password);
+  };
+
   if (loading) {
     return <Spinner />;
   }
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
-
-  if (errors || error) {
-    console.log(errors || error);
+  if (error) {
+    toast.error(error.message);
   }
 
   return (
@@ -71,9 +72,12 @@ const Login = () => {
                   })}
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <label
+                    htmlFor="forgotPass-Modal"
+                    className="btn btn-link link-hover"
+                  >
                     Forgot password?
-                  </a>
+                  </label>
                 </label>
               </div>
 
@@ -84,7 +88,7 @@ const Login = () => {
             <div className="">
               <h3 className="text-xl font-light">
                 You have no account?{" "}
-                <Link to="/registration" className="text-accent">
+                <Link to="/register" className="text-accent">
                   Register
                 </Link>
               </h3>
@@ -92,6 +96,7 @@ const Login = () => {
             <div className="divider">OR</div>
             <SocialAuthentication />
           </div>
+          {<ForgotPass />}
         </div>
       </div>
     </div>
