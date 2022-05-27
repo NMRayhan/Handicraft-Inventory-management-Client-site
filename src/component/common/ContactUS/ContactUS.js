@@ -1,6 +1,28 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const ContactUS = () => {
+  const handleContactUs = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const company = e.target.company.value;
+    const question = e.target.question.value;
+
+    const randomQuestion = { name, email, company, question };
+    fetch("http://localhost:5000/ask", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(randomQuestion),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast.success("Your Question Submitted Successfully");
+        return e.target.reset();
+      });
+  };
   return (
     <div className="min-h-screen mt-10">
       <h3 className="text-center font-serif text-5xl">
@@ -13,18 +35,19 @@ const ContactUS = () => {
       </p>
       <div className="">
         <div style={{ width: "70%", margin: "auto" }}>
-          <h3 className="lg:text-6xl md:text-3xl sm:text-xl">
-            Have any sales question?
+          <h3 className="lg:text-4xl md:text-2xl sm:text-xl">
+            Have any question about <strong className="text-secondary">Handicraft by Rayhan</strong> ?
           </h3>
-          <form>
+          <form onSubmit={handleContactUs}>
             <div className="grid gap-5 grid-flow-col">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                  autocomplete="false"
+                  autocomplete="off"
                   type="text"
+                  name="name"
                   className="input input-bordered"
                 />
               </div>
@@ -35,6 +58,7 @@ const ContactUS = () => {
                 <input
                   autocomplete="false"
                   type="text"
+                  name="email"
                   className="input input-bordered"
                 />
               </div>
@@ -46,6 +70,7 @@ const ContactUS = () => {
               <input
                 autocomplete="false"
                 type="text"
+                name="company"
                 className="input input-bordered"
               />
             </div>
@@ -54,11 +79,14 @@ const ContactUS = () => {
                 <span className="label-text">Your Message</span>
               </label>
               <textarea
+                name="question"
                 className="textarea textarea-bordered"
               ></textarea>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary max-w-fit">Send US</button>
+              <button className="btn btn-primary max-w-fit" type="submit">
+                Send US
+              </button>
             </div>
           </form>
         </div>
