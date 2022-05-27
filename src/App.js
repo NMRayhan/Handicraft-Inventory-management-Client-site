@@ -6,6 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./component/Home/Home";
 import NavBar from "./component/common/NavBar/NavBar";
 import Footer from "./component/common/Footer/Footer";
+import About from "./component/common/About/About";
+import Blog from "./component/common/Blog/Blog";
+import ContactUS from "./component/common/ContactUS/ContactUS";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
+          <Route path="about" element={<About></About>}></Route>
+          <Route path="blog" element={<Blog></Blog>}></Route>
+          <Route path="contact" element={<ContactUS></ContactUS>}></Route>
         </Routes>
         <Footer />
         <ToastContainer />

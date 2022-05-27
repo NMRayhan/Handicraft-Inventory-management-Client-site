@@ -21,7 +21,7 @@ const Product = ({ details }) => {
             <p>{stock}</p>
           </div>
           <div>
-            <span className="text-accent text-xl">Minimum Order </span>
+            <span className="text-accent text-xl">Order </span><div class="badge badge-primary badge-outline">Minimum</div>
             <p>{min_Order}</p>
           </div>
         </div>
