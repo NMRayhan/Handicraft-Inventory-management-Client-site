@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
+import Spinner from "../common/Spinner";
 
 const Purchase = () => {
   const [product, setProduct] = useState([]);
@@ -8,6 +11,7 @@ const Purchase = () => {
   const [purchaseError, setPurchaseError] = useState("");
   const { _id } = useParams();
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
     const url = `http://localhost:5000/purchase/${_id}`;
@@ -15,6 +19,17 @@ const Purchase = () => {
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, [_id]);
+
+
+  if (loading) {
+    return <Spinner/>
+  }
+
+
+  if (error) {
+    console.log(error);
+  }
+
 
   //   submit Product Purchase details
   const handleSubmitPurchase = (e) => {
@@ -127,6 +142,8 @@ const Purchase = () => {
                     <input
                       type="email"
                       name="customer_email"
+                      value={user?.email}
+                      readOnly
                       className="input input-bordered"
                     />
                   </div>
@@ -136,6 +153,8 @@ const Purchase = () => {
                     </label>
                     <input
                       type="text"
+                      value={user?.displayName}
+                      readOnly
                       name="customer_name"
                       className="input input-bordered"
                     />
