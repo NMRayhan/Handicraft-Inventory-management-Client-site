@@ -12,6 +12,9 @@ import ContactUS from "./component/common/ContactUS/ContactUS";
 import Products from "./component/Home/Products";
 import Purchase from "./component/user/Purchase";
 import ErrorPage from "./component/common/ErrorPage/ErrorPage";
+import Login from "./component/Authentication/Login";
+import Registration from "./component/Authentication/Registration";
+import RequireAuth from "./component/Authentication/RequireAuth";
 
 function App() {
   return (
@@ -24,7 +27,15 @@ function App() {
           <Route path="blog" element={<Blog></Blog>}></Route>
           <Route path="contact" element={<ContactUS></ContactUS>}></Route>
           <Route path="products" element={<Products></Products>}></Route>
-          <Route path="purchase/:_id" element={<Purchase></Purchase>}></Route>
+          <Route path="purchase/:_id" 
+            element={
+              <RequireAuth>
+                <Purchase></Purchase>
+              </RequireAuth>
+            }
+          ></Route>
+          <Route path="login" element={<Login></Login>}></Route>
+          <Route path="registration" element={<Registration></Registration>}></Route>
           <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
         <Footer />

@@ -117,27 +117,28 @@ const Purchase = () => {
             <div className="card shadow-2xl bg-base-100">
               <div className="card-body">
                 <form onSubmit={handleSubmitPurchase}>
-                  <div className="grid gap-5 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 justify-center items-center">
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Customer Email</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="customer_email"
-                        className="input input-bordered"
-                      />
-                    </div>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Customer Name</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="customer_name"
-                        className="input input-bordered"
-                      />
-                    </div>
+                  {/* <div className="grid gap-5 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 justify-center items-center">
+                    
+                  </div> */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Customer Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="customer_email"
+                      className="input input-bordered"
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Customer Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="customer_name"
+                      className="input input-bordered"
+                    />
                   </div>
                   <div className="">
                     <div className="form-control">
