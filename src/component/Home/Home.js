@@ -1,6 +1,7 @@
 import React from "react";
 import BusinessSummary from "./BusinessSummary";
 import CustomerSupport from "./CustomerSupport";
+import FAQ from "./FAQ";
 import HomeBanner from "./HomeBanner";
 import Products from "./Products";
 
@@ -18,6 +19,9 @@ const Home = () => {
       </div>
       <div>
         <CustomerSupport/>
+      </div>
+      <div>
+        <FAQ/>
       </div>
     </div>
   );

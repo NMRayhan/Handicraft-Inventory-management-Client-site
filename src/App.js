@@ -10,6 +10,8 @@ import About from "./component/common/About/About";
 import Blog from "./component/common/Blog/Blog";
 import ContactUS from "./component/common/ContactUS/ContactUS";
 import Products from "./component/Home/Products";
+import Purchase from "./component/user/Purchase";
+import ErrorPage from "./component/common/ErrorPage/ErrorPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="blog" element={<Blog></Blog>}></Route>
           <Route path="contact" element={<ContactUS></ContactUS>}></Route>
           <Route path="products" element={<Products></Products>}></Route>
+          <Route path="purchase/:_id" element={<Purchase></Purchase>}></Route>
+          <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
         <Footer />
         <ToastContainer />

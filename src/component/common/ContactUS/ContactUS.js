@@ -13,50 +13,52 @@ const ContactUS = () => {
       </p>
       <div className="">
         <div style={{ width: "70%", margin: "auto" }}>
-          <h3 className="lg:text-6xl md:text-3xl sm:text-xl">Have any sales question?</h3>
+          <h3 className="lg:text-6xl md:text-3xl sm:text-xl">
+            Have any sales question?
+          </h3>
           <form>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Name</span>
+            <div className="grid gap-5 grid-flow-col">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  autocomplete="false"
+                  type="text"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  autocomplete="false"
+                  type="text"
+                  className="input input-bordered"
+                />
+              </div>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Company Name</span>
               </label>
               <input
+                autocomplete="false"
                 type="text"
-                placeholder="Name"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Email</span>
-              </label>
-              <input
-                type="text"
-                placeholder="email"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Company Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Company Name"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Your Message</span>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Your Message</span>
               </label>
               <textarea
-                type="text"
-                placeholder="Your Message"
-                class="input input-bordered"
+                className="textarea textarea-bordered"
               ></textarea>
             </div>
-            <div class="form-control mt-6">
-              <button class="btn btn-primary max-w-fit">Send US</button>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary max-w-fit">Send US</button>
             </div>
           </form>
         </div>
