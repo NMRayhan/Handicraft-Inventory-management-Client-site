@@ -1,11 +1,10 @@
 import {
-  faCode,
-  faGraduationCap,
-  faLink,
-  faMailBulk,
-  faPhone,
+    faCode,
+    faGraduationCap,
+    faLink,
+    faMailBulk,
+    faPhone
 } from "@fortawesome/free-solid-svg-icons";
-import linkedin from "../../../Assets/linkedin-brands.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import MyPicture from "../../../Assets/passport-size .jpg";
@@ -14,16 +13,16 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen">
       <div className="grid gap-5 items-start lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
-        <div class="avatar">
-          <div class="rounded">
+        <div className="avatar">
+          <div className="rounded">
             <img src={MyPicture} alt="Developer Rayhan" className="w-6/12" />
           </div>
         </div>
         <div className="">
           <div className="card bg-primary text-primary-content sm:mt-5">
-            <div class="card-body">
-              <h2 class="card-title text-4xl">I'm Nur Mohammad Rayhan</h2>
-              <h2 class="card-title text-2xl font-bold">
+            <div className="card-body">
+              <h2 className="card-title text-4xl">I'm Nur Mohammad Rayhan</h2>
+              <h2 className="card-title text-2xl font-bold">
                 Passionate Web Developer
               </h2>
               <p className="text-xl">
@@ -69,7 +68,7 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-      <div class="divider"></div>
+      <div className="divider"></div>
       <div>
         <div className="mt-5">
           <h1 className="text-4xl font-mono my-10 text-primary font-bold">
@@ -119,7 +118,7 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-      <div class="divider"></div>
+      <div className="divider"></div>
       <div>
         <div className="mt-5">
           <h1 className="text-4xl font-mono my-10 text-primary font-bold">

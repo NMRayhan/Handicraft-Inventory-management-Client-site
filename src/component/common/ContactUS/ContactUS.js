@@ -45,7 +45,7 @@ const ContactUS = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                  autocomplete="off"
+                  autoComplete="off"
                   type="text"
                   name="name"
                   className="input input-bordered"
@@ -56,7 +56,7 @@ const ContactUS = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  autocomplete="false"
+                  autoComplete="false"
                   type="text"
                   name="email"
                   className="input input-bordered"
@@ -68,7 +68,7 @@ const ContactUS = () => {
                 <span className="label-text">Company Name</span>
               </label>
               <input
-                autocomplete="false"
+                autoComplete="false"
                 type="text"
                 name="company"
                 className="input input-bordered"

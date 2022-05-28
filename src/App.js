@@ -15,6 +15,9 @@ import Login from "./component/Authentication/Login";
 import Registration from "./component/Authentication/Registration";
 import RequireAuth from "./component/Authentication/RequireAuth";
 import Dashboard from "./component/user/Dashboard";
+import Orders from "./component/user/Orders";
+import Reviews from "./component/user/Reviews";
+import MyProfile from "./component/user/MyProfile";
 
 function App() {
   return (
@@ -23,21 +26,30 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/home" element={<Home></Home>}></Route>
-          <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
-          <Route path="/blog" element={<Blog></Blog>}></Route>
-          <Route path="/contact" element={<ContactUS></ContactUS>}></Route>
-          <Route path="/products" element={<Products></Products>}></Route>
-          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-          <Route path="/purchase/:_id" 
+          <Route path="home" element={<Home></Home>}></Route>
+          <Route path="portfolio" element={<Portfolio></Portfolio>}></Route>
+          <Route path="blog" element={<Blog></Blog>}></Route>
+          <Route path="contact" element={<ContactUS></ContactUS>}></Route>
+          <Route path="products" element={<Products></Products>}></Route>
+          <Route path="dashboard" 
+          element={
+              <RequireAuth>
+                <Dashboard></Dashboard>
+              </RequireAuth>
+          }>
+            <Route index element={<Orders/>}/>
+            <Route path="review" element={<Reviews/>}/>
+            <Route path="profile" element={<MyProfile/>}/>
+          </Route>
+          <Route path="purchase/:_id" 
             element={
               <RequireAuth>
                 <Purchase></Purchase>
               </RequireAuth>
             }
           ></Route>
-          <Route path="/register" element={<Registration></Registration>}></Route>
-          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="register" element={<Registration></Registration>}></Route>
+          <Route path="login" element={<Login></Login>}></Route>
           <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
         <Footer />
