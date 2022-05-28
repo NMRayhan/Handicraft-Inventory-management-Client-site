@@ -3,6 +3,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
 import Spinner from "../common/Spinner";
 
 const SocialAuthentication = () => {
@@ -13,11 +14,13 @@ const SocialAuthentication = () => {
   const handleSocialLogin = () => {
     signInWithGoogle();
   };
+  const [token] = useToken(user);
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token, from, navigate]);
 
   if (loading) {
     return <Spinner />;

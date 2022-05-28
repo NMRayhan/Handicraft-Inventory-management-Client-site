@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
 import Spinner from "../common/Spinner";
 import ForgotPass from "./ForgotPass";
 import SocialAuthentication from "./SocialAuthentication";
@@ -18,11 +19,13 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const [token] = useToken(user);
+
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token, from, navigate]);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {

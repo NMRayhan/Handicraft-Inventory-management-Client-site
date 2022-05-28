@@ -9,13 +9,13 @@ import {
 } from "react-firebase-hooks/auth";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
+import useToken from "../../Hooks/useToken";
 
 const Registration = () => {
   // use form hook
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
 
   //   firebase hooks
@@ -23,16 +23,18 @@ const Registration = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, error2] = useUpdateProfile(auth);
 
+  const [token] = useToken(user);
+
   //   react router dom
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [token,from, navigate]);
 
   if (loading || updating) {
     return <Spinner />;
