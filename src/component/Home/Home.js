@@ -3,6 +3,7 @@ import BusinessSummary from "./BusinessSummary";
 import CustomerSupport from "./CustomerSupport";
 import FAQ from "./FAQ";
 import HomeBanner from "./HomeBanner";
+import HomeReview from "./HomeReview";
 import Products from "./Products";
 
 const Home = () => {
@@ -19,6 +20,9 @@ const Home = () => {
       </div>
       <div>
         <CustomerSupport/>
+      </div>
+      <div>
+        <HomeReview/>
       </div>
       <div>
         <FAQ/>

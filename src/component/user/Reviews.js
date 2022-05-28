@@ -1,17 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Spinner from "../common/Spinner";
 import AddReviewModal from "./AddReviewModal";
 
 const Reviews = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [reviews, setReviews] = useState([]);
-  useEffect(() => {
-    const url = `http://localhost:5000/review/${user?.email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, [user.email]);
+
+  const {
+    data: reviews,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch(`http://localhost:5000/review/${user?.email}`).then((res) =>
+      res.json()
+    )
+  );
+
+
+  const HandleDeleteReview = (id) => {
+    fetch(`http://localhost:5000/review/${id}`, {
+      method: "PUT",
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      // },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast(data.message);
+        refetch();
+      });
+  }
+
+  if (isLoading || loading) {
+    return <Spinner/>
+  }
+
+  if (error) {
+    console.log(error.message);
+  }
 
   console.log(reviews);
 
@@ -39,7 +68,7 @@ const Reviews = () => {
                     <td>{review.productName}</td>
                     <td>{review.userReview}</td>
                     <td>
-                      <button className="btn btn-sm btn-warning">Delete</button>
+                      <button className="btn btn-sm btn-warning" onClick={()=> HandleDeleteReview(review._id)}>Delete</button>
                     </td>
                   </tr>
                 );
