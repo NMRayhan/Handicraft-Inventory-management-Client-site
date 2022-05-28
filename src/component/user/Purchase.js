@@ -47,6 +47,7 @@ const Purchase = () => {
       customer_phone,
       product_name,
       quantity,
+      price : product.price,
       shippingAddress,
     };
     const url = `http://localhost:5000/purchase`;

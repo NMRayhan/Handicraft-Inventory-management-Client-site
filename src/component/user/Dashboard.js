@@ -1,7 +1,10 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const Dashboard = () => {
+  const [user, loading, error] = useAuthState(auth);
   return (
     <div className="px-28">
       <div className="drawer drawer-mobile">
@@ -13,7 +16,7 @@ const Dashboard = () => {
         <div className="drawer-content">
           <div className="flex flex-row justify-between items-center">
             <span className="text-accent my-4 font-semibold text-4xl">
-              Welcome to My Dashboard
+              Welcome to Dashboard Mr <span className="text-teal-500">{user?.displayName}</span>
             </span>
             <span>
               <label
