@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Spinner from "../common/Spinner";
@@ -10,7 +10,6 @@ const Purchase = () => {
   const [quantity, setQuantity] = useState(product.min_Order);
   const [purchaseError, setPurchaseError] = useState("");
   const { _id } = useParams();
-  const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
@@ -18,18 +17,15 @@ const Purchase = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProduct(data));
-  }, [_id]);
-
+  }, [_id, product.stock]);
 
   if (loading) {
-    return <Spinner/>
+    return <Spinner />;
   }
-
 
   if (error) {
     console.log(error);
   }
-
 
   //   submit Product Purchase details
   const handleSubmitPurchase = (e) => {
@@ -40,6 +36,7 @@ const Purchase = () => {
     const product_name = e.target.product_name.value;
     const quantity = e.target.quantity.value;
     const shippingAddress = e.target.shippingAddress.value;
+    const productId = product._id;
 
     const Order = {
       customer_name,
@@ -47,9 +44,11 @@ const Purchase = () => {
       customer_phone,
       product_name,
       quantity,
-      price : product.price,
+      price: product.price,
       shippingAddress,
+      productId,
     };
+
     const url = `http://localhost:5000/purchase`;
     fetch(url, {
       method: "POST",

@@ -38,9 +38,6 @@ const NavBar = () => {
   if (error) {
     console.log(error);
   }
-  if (user) {
-    console.log(user);
-  }
 
   return (
     <div className="">

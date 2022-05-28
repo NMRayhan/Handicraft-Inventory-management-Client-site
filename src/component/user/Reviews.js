@@ -19,30 +19,32 @@ const Reviews = () => {
     )
   );
 
-
   const HandleDeleteReview = (id) => {
-    fetch(`http://localhost:5000/review/${id}`, {
-      method: "PUT",
-      // headers: {
-      //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      // },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        toast(data.message);
-        refetch();
-      });
-  }
+    const proceed = window.confirm("Are You sure want to delete this review?");
+    if (!proceed) {
+      return;
+    } else {
+      fetch(`http://localhost:5000/review/${id}`, {
+        method: "PUT",
+        // headers: {
+        //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        // },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          toast(data.message);
+          refetch();
+        });
+    }
+  };
 
   if (isLoading || loading) {
-    return <Spinner/>
+    return <Spinner />;
   }
 
   if (error) {
     console.log(error.message);
   }
-
-  console.log(reviews);
 
   return (
     <div className="">
@@ -50,8 +52,8 @@ const Reviews = () => {
         Add Review
       </label>
       <div>
-        <div class="overflow-x-auto">
-          <table class="table w-full">
+        <div className="overflow-x-auto">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>No</th>
@@ -68,7 +70,12 @@ const Reviews = () => {
                     <td>{review.productName}</td>
                     <td>{review.userReview}</td>
                     <td>
-                      <button className="btn btn-sm btn-warning" onClick={()=> HandleDeleteReview(review._id)}>Delete</button>
+                      <button
+                        className="btn btn-sm btn-warning"
+                        onClick={() => HandleDeleteReview(review._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
