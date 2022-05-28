@@ -8,12 +8,15 @@ const AddReviewModal = () => {
   const [user, loading, error] = useAuthState(auth);
   const [products, setProducts] = useState([]);
   const [productName, setProductName] = useState("");
+  const [rating, setRating] = useState('');
   useEffect(() => {
     const url = "http://localhost:5000/products";
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);
+
+  console.log(rating);
 
   const handleAddReview = (event) => {
     event.preventDefault();
@@ -29,11 +32,12 @@ const AddReviewModal = () => {
     const review = {
       productName: product,
       userReview: userReview,
+      userRating: rating,
       reviewEmail: user.email,
       reviewName: user.displayName,
       reviewPhoto: photoURL,
     };
-    
+
     fetch("http://localhost:5000/review", {
       method: "POST",
       headers: {
@@ -48,6 +52,10 @@ const AddReviewModal = () => {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (error) {
+    console.log(error.message);
   }
 
   return (
@@ -90,10 +98,78 @@ const AddReviewModal = () => {
             <div className="form-control mt-5">
               <textarea
                 name="review"
+                required
                 className="textarea textarea-primary"
                 placeholder="Enter Your Review"
               ></textarea>
             </div>
+
+            <div className="form-control mt-5">
+              <div class="rating rating-lg rating-half">
+                <input type="radio" class="rating-hidden" />
+                <input
+                  type="radio"
+                  value=".5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                />
+                <input
+                  type="radio"
+                  value="1"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                />
+                <input
+                  type="radio"
+                  value="1.5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                />
+                <input
+                  type="radio"
+                  value="2"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                />
+                <input
+                  type="radio"
+                  value="2.5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                />
+                <input
+                  type="radio"
+                  value="3"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                />
+                <input
+                  type="radio"
+                  value="3.5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                />
+                <input
+                  type="radio"
+                  value="4"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                />
+                <input
+                  type="radio"
+                  value="4.5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                />
+                <input
+                  type="radio"
+                  value="5"
+                  onChange={(e) => setRating(e.target.value)}
+                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                />
+              </div>
+            </div>
+
             <div className="mt-5">
               <button type="submit" className="btn btn-outline btn-primary">
                 Submit

@@ -59,6 +59,7 @@ const Reviews = () => {
                 <th>No</th>
                 <th>Product Name</th>
                 <th>Review</th>
+                <th>Rating</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -69,6 +70,7 @@ const Reviews = () => {
                     <th>{(index += 1)}</th>
                     <td>{review.productName}</td>
                     <td>{review.userReview}</td>
+                    <td>{review.userRating}</td>
                     <td>
                       <button
                         className="btn btn-sm btn-warning"
