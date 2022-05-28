@@ -7,8 +7,8 @@ const MyProfile = () => {
   return (
     <div className="">
       <h2 className="text-primary text-3xl">My Profile</h2>
-      <div class="avatar mt-10">
-        <div class="w-full rounded-full">
+      <div className="avatar mt-10">
+        <div className="w-full rounded-full">
           {user.photoURL !== null ? (
             <img src={user.photoURL} alt={user.displayName} />
           ) : (
