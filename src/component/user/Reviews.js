@@ -13,7 +13,7 @@ const Reviews = () => {
     data: reviews,
     isLoading,
     refetch,
-  } = useQuery("users", () =>
+  } = useQuery("reviews", () =>
     fetch(`http://localhost:5000/review/${user?.email}`).then((res) =>
       res.json()
     )
@@ -25,10 +25,7 @@ const Reviews = () => {
       return;
     } else {
       fetch(`http://localhost:5000/review/${id}`, {
-        method: "PUT",
-        // headers: {
-        //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        // },
+        method: "DELETE"
       })
         .then((response) => response.json())
         .then((data) => {

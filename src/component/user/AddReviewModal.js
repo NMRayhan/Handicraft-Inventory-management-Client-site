@@ -16,8 +16,6 @@ const AddReviewModal = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  console.log(rating);
-
   const handleAddReview = (event) => {
     event.preventDefault();
     const product = productName;
@@ -76,7 +74,7 @@ const AddReviewModal = () => {
                 className="select select-bordered w-full"
                 onChange={(e) => setProductName(e.target.value)}
               >
-                <option disabled selected>
+                <option disabled>
                   Pick a product
                 </option>
                 {products.map((product, index) => (
@@ -105,67 +103,67 @@ const AddReviewModal = () => {
             </div>
 
             <div className="form-control mt-5">
-              <div class="rating rating-lg rating-half">
-                <input type="radio" class="rating-hidden" />
+              <div className="rating rating-lg rating-half">
+                <input type="radio" className="rating-hidden" />
                 <input
                   type="radio"
                   value=".5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                  className="bg-green-500 mask mask-star-2 mask-half-1"
                 />
                 <input
                   type="radio"
                   value="1"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                  className="bg-green-500 mask mask-star-2 mask-half-2"
                 />
                 <input
                   type="radio"
                   value="1.5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                  className="bg-green-500 mask mask-star-2 mask-half-1"
                 />
                 <input
                   type="radio"
                   value="2"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                  className="bg-green-500 mask mask-star-2 mask-half-2"
                 />
                 <input
                   type="radio"
                   value="2.5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                  className="bg-green-500 mask mask-star-2 mask-half-1"
                 />
                 <input
                   type="radio"
                   value="3"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                  className="bg-green-500 mask mask-star-2 mask-half-2"
                 />
                 <input
                   type="radio"
                   value="3.5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                  className="bg-green-500 mask mask-star-2 mask-half-1"
                 />
                 <input
                   type="radio"
                   value="4"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                  className="bg-green-500 mask mask-star-2 mask-half-2"
                 />
                 <input
                   type="radio"
                   value="4.5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-1"
+                  className="bg-green-500 mask mask-star-2 mask-half-1"
                 />
                 <input
                   type="radio"
                   value="5"
                   onChange={(e) => setRating(e.target.value)}
-                  class="bg-green-500 mask mask-star-2 mask-half-2"
+                  className="bg-green-500 mask mask-star-2 mask-half-2"
                 />
               </div>
             </div>

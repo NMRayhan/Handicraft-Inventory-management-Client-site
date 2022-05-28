@@ -18,6 +18,7 @@ import Dashboard from "./component/user/Dashboard";
 import Orders from "./component/user/Orders";
 import Reviews from "./component/user/Reviews";
 import MyProfile from "./component/user/MyProfile";
+import ManageUser from "./component/admin/ManageUser";
 
 function App() {
   return (
@@ -31,24 +32,31 @@ function App() {
           <Route path="blog" element={<Blog></Blog>}></Route>
           <Route path="contact" element={<ContactUS></ContactUS>}></Route>
           <Route path="products" element={<Products></Products>}></Route>
-          <Route path="dashboard" 
-          element={
+          <Route
+            path="dashboard"
+            element={
               <RequireAuth>
                 <Dashboard></Dashboard>
               </RequireAuth>
-          }>
-            <Route index element={<Orders/>}/>
-            <Route path="review" element={<Reviews/>}/>
-            <Route path="profile" element={<MyProfile/>}/>
+            }
+          >
+            <Route index element={<Orders />} />
+            <Route path="review" element={<Reviews />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="users" element={<ManageUser />} />
           </Route>
-          <Route path="purchase/:_id" 
+          <Route
+            path="purchase/:_id"
             element={
               <RequireAuth>
                 <Purchase></Purchase>
               </RequireAuth>
             }
           ></Route>
-          <Route path="register" element={<Registration></Registration>}></Route>
+          <Route
+            path="register"
+            element={<Registration></Registration>}
+          ></Route>
           <Route path="login" element={<Login></Login>}></Route>
           <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
