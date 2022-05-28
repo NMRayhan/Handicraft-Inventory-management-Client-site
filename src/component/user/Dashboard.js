@@ -2,10 +2,12 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 import Spinner from "../common/Spinner";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
   if (loading) {
     return <Spinner />;
@@ -15,18 +17,28 @@ const Dashboard = () => {
   }
   const dashboardNavItem = (
     <React.Fragment>
-      <li>
-        <Link to="/dashboard">My Order</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/review">My Review</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/profile">My Profile</Link>
-      </li>
-      <li>
-        <Link to="/dashboard/users">Manage User</Link>
-      </li>
+      {admin === true ? (
+        <>
+          <li>
+            <Link to="/dashboard/profile">My Profile</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/users">Manage User</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/dashboard">My Order</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/review">My Review</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/profile">My Profile</Link>
+          </li>
+        </>
+      )}
     </React.Fragment>
   );
   return (

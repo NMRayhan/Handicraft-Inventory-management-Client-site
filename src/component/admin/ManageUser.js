@@ -1,34 +1,34 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Spinner from "../common/Spinner";
 import UserRow from "./UserRow";
 
 const ManageUser = () => {
-  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
+  const { data: users, isLoading, refetch } = useQuery("users", () =>
     fetch("http://localhost:5000/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          return response.json();
-        } else {
-          if (response.status === 403 || response.status === 401) {
-            navigate("/home");
-            localStorage.removeItem("accessToken");
-            signOut(auth);
-          }
+    }).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      } else {
+        if (response.status === 403 || response.status === 401) {
+          navigate("/home");
+          localStorage.removeItem("accessToken");
+          signOut(auth);
         }
-      })
-      .then((data) => setUsers(data));
-  }, [navigate]);
+      }
+    })
+  );
+  if (isLoading) {
+    return <Spinner/>
+  }
   return (
     <div>
       <h2>All user</h2>
@@ -43,7 +43,7 @@ const ManageUser = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <UserRow key={user._id} details={user} />
+              <UserRow key={user._id} refetch={refetch} details={user} />
             ))}
           </tbody>
         </table>

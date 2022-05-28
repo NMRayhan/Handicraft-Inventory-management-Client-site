@@ -1,20 +1,13 @@
-import React from "react";
-import { useQuery } from "react-query";
-import Spinner from "../common/Spinner";
+import React, { useEffect, useState } from "react";
 import Review from "./Review";
 
 const HomeReview = () => {
-  const {
-    data: reviews,
-    isLoading,
-    refetch,
-  } = useQuery("users", () =>
-    fetch(`http://localhost:5000/review`).then((res) => res.json())
-  );
-  if (isLoading) {
-    return <Spinner />;
-  }
-  console.log(reviews);
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/review`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
   return (
     <div className="my-10">
       <div className="divider divider-vertical"></div>
