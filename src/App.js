@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./component/Home/Home";
 import NavBar from "./component/common/NavBar/NavBar";
 import Footer from "./component/common/Footer/Footer";
-import About from "./component/common/About/About";
+import Portfolio from "./component/common/Portfolio/Portfolio";
 import Blog from "./component/common/Blog/Blog";
 import ContactUS from "./component/common/ContactUS/ContactUS";
 import Products from "./component/Home/Products";
@@ -14,6 +14,7 @@ import ErrorPage from "./component/common/ErrorPage/ErrorPage";
 import Login from "./component/Authentication/Login";
 import Registration from "./component/Authentication/Registration";
 import RequireAuth from "./component/Authentication/RequireAuth";
+import Dashboard from "./component/user/Dashboard";
 
 function App() {
   return (
@@ -23,10 +24,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
-          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
           <Route path="/blog" element={<Blog></Blog>}></Route>
           <Route path="/contact" element={<ContactUS></ContactUS>}></Route>
           <Route path="/products" element={<Products></Products>}></Route>
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="/purchase/:_id" 
             element={
               <RequireAuth>

@@ -15,7 +15,7 @@ const NavBar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/about">About Us</Link>
+        <Link to="/portfolio">Portfolio</Link>
       </li>
       <li>
         <Link to="/blog">Blog</Link>
@@ -23,11 +23,11 @@ const NavBar = () => {
       <li>
         <Link to="/contact">Contact Us</Link>
       </li>
-      {/* {user && (
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          )} */}
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
     </React.Fragment>
   );
 
@@ -43,7 +43,7 @@ const NavBar = () => {
   }
 
   return (
-    <div>
+    <div className="">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -81,12 +81,7 @@ const NavBar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full bg-primary">
-                {user && (
-                  <img
-                    src="https://api.lorem.space/image/face?hash=33791"
-                    alt=""
-                  />
-                )}
+                {user && <img src={user?.photoURL} alt="" />}
               </div>
             </label>
             <ul
