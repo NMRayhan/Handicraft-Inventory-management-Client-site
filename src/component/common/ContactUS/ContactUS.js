@@ -35,11 +35,11 @@ const ContactUS = () => {
       </p>
       <div className="">
         <div style={{ width: "70%", margin: "auto" }}>
-          <h3 className="lg:text-4xl md:text-2xl sm:text-xl">
+          <h3 className="lg:text-3xl md:text-2xl sm:text-sm">
             Have any question about <strong className="text-secondary">Handicraft by Rayhan</strong> ?
           </h3>
           <form onSubmit={handleContactUs}>
-            <div className="grid gap-5 grid-flow-col">
+            <div className="grid gap-5 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>

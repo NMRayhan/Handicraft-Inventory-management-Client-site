@@ -3,13 +3,17 @@ import React from "react";
 const Blog = () => {
   return (
     <div className="min-h-screen">
-      <div className="grid grid-flow-row gap-10">
-        <div className="card card-side bg-base-100 shadow-xl">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+        <div className="card bg-base-100 shadow-xl">
           <figure>
-            <img src="https://i.ibb.co/nmm0Ypv/1616394211.jpg" alt="Movie" className="rounded-lg" />
+            <img
+              src="https://i.ibb.co/nmm0Ypv/1616394211.jpg"
+              alt="Movie"
+              className="rounded-lg"
+            />
           </figure>
           <div className="card-body">
-            <h1 className="card-title font-semibold text-2xl">
+            <h1 className="card-title text-primary font-semibold text-2xl">
               How will you improve the performance of a React Application?
             </h1>
             <p className="font-medium text-xl">
@@ -29,9 +33,16 @@ const Blog = () => {
             </a>
           </div>
         </div>
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src="https://i.ibb.co/F5dbGXx/Reactstatepng.png"
+              alt="Movie"
+              className="rounded-lg"
+            />
+          </figure>
           <div className="card-body">
-            <h1 className="card-title font-semibold text-2xl">
+            <h1 className="card-title text-primary font-semibold text-2xl">
               What are the different ways to manage a state in a React
               application?
             </h1>
@@ -58,16 +69,17 @@ const Blog = () => {
               Read more
             </a>
           </div>
-          <figure>
-            <img src="https://i.ibb.co/F5dbGXx/Reactstatepng.png" alt="Movie" className="rounded-lg" />
-          </figure>
         </div>
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl">
           <figure>
-            <img src="https://i.ibb.co/cQw0BS5/inheritance.png" alt="Movie" className="rounded-lg" />
+            <img
+              src="https://i.ibb.co/cQw0BS5/inheritance.png"
+              alt="Movie"
+              className="rounded-lg"
+            />
           </figure>
           <div className="card-body">
-            <h1 className="card-title font-semibold text-2xl">
+            <h1 className="card-title text-primary font-semibold text-2xl">
               How does prototypical inheritance work?
             </h1>
             <p className="font-medium text-xl">
@@ -89,9 +101,16 @@ const Blog = () => {
             </a>
           </div>
         </div>
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src="https://i.ibb.co/k5KxYbd/unit-testing.webp"
+              alt="Movie"
+              className="rounded-lg"
+            />
+          </figure>
           <div className="card-body">
-            <h1 className="card-title font-semibold text-2xl">
+            <h1 className="card-title text-primary font-semibold text-2xl">
               What is a unit test? Why should write unit tests?
             </h1>
             <p className="font-medium text-xl">
@@ -111,9 +130,7 @@ const Blog = () => {
               Read more
             </a>
           </div>
-          <figure>
-            <img src="https://i.ibb.co/k5KxYbd/unit-testing.webp" alt="Movie" className="rounded-lg" />
-          </figure>
+          
         </div>
       </div>
     </div>

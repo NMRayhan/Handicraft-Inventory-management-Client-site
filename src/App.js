@@ -19,6 +19,9 @@ import Orders from "./component/user/Orders";
 import Reviews from "./component/user/Reviews";
 import MyProfile from "./component/user/MyProfile";
 import ManageUser from "./component/admin/ManageUser";
+import ManageOrder from "./component/admin/ManageOrder";
+import ManageProducts from "./component/admin/ManageProducts";
+import AddProduct from "./component/admin/AddProduct";
 
 function App() {
   return (
@@ -44,6 +47,9 @@ function App() {
             <Route path="review" element={<Reviews />} />
             <Route path="profile" element={<MyProfile />} />
             <Route path="users" element={<ManageUser />} />
+            <Route path="orders" element={<ManageOrder />} />
+            <Route path="products" element={<ManageProducts />} />
+            <Route path="addProduct" element={<AddProduct />} />
           </Route>
           <Route
             path="purchase/:_id"

@@ -16,11 +16,13 @@ const SocialAuthentication = () => {
   };
   const [token] = useToken(user);
 
-  useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, from, navigate]);
+  // useEffect(() => {
+    
+  // }, [token, from, navigate]);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   if (loading) {
     return <Spinner />;

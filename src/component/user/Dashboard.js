@@ -3,11 +3,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
 import useAdmin from "../../Hooks/useAdmin";
+import useToken from "../../Hooks/useToken";
 import Spinner from "../common/Spinner";
+
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [admin] = useAdmin(user);
+  const [token] = useToken(user)
 
   if (loading) {
     return <Spinner />;
@@ -21,6 +24,15 @@ const Dashboard = () => {
         <>
           <li>
             <Link to="/dashboard/profile">My Profile</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/addProduct">Add Product</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/products">Manage Product</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/orders">Manage Order</Link>
           </li>
           <li>
             <Link to="/dashboard/users">Manage User</Link>
@@ -42,7 +54,7 @@ const Dashboard = () => {
     </React.Fragment>
   );
   return (
-    <div className="px-28">
+    <div className="">
       <div className="drawer drawer-mobile">
         <input
           id="dashboard-drawer"
@@ -51,7 +63,7 @@ const Dashboard = () => {
         />
         <div className="drawer-content">
           <div className="flex flex-row justify-between items-center">
-            <span className="text-accent my-4 font-semibold text-4xl">
+            <span className="text-accent my-4 font-semibold text-xl">
               Welcome to Dashboard Mr{" "}
               <span className="text-teal-500">{user?.displayName}</span>
             </span>
