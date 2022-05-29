@@ -10,7 +10,7 @@ const OrderRow = ({ details, index }) => {
     shippingAddress,
   } = details;
   return (
-    <tr class="hover">
+    <tr className="hover">
       <th>{(index += 1)}</th>
       <td>{customer_email}</td>
       <td>{customer_phone}</td>

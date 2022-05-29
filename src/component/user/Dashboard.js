@@ -3,14 +3,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
 import useAdmin from "../../Hooks/useAdmin";
-import useToken from "../../Hooks/useToken";
 import Spinner from "../common/Spinner";
 
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [admin] = useAdmin(user);
-  const [token] = useToken(user)
 
   if (loading) {
     return <Spinner />;

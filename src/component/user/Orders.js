@@ -10,7 +10,9 @@ const Orders = () => {
 
   useEffect(() => {
     const url = `http://localhost:5000/orders/${user?.email}`;
-    fetch(url)
+    fetch(url,{
+      method:"GET"
+    })
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user.email]);
