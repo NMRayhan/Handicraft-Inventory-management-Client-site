@@ -9,7 +9,7 @@ const ManageProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${user.email}`)
+    fetch(`https://rocky-peak-58572.herokuapp.com/products/${user.email}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [user.email]);

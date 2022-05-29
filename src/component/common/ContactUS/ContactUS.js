@@ -10,7 +10,7 @@ const ContactUS = () => {
     const question = e.target.question.value;
 
     const randomQuestion = { name, email, company, question };
-    fetch("http://localhost:5000/ask", {
+    fetch("https://rocky-peak-58572.herokuapp.com/ask", {
       method: "POST",
       headers: {
         "content-type": "application/json",

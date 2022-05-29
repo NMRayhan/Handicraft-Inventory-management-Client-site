@@ -14,7 +14,7 @@ const Orders = () => {
     refetch,
     data
   } = useQuery("repoData", () =>
-    fetch(`http://localhost:5000/orders/${user?.email}`, {
+    fetch(`https://rocky-peak-58572.herokuapp.com/orders/${user?.email}`, {
       method: "GET",
     }).then((res) => res.json())
   );

@@ -1,7 +1,5 @@
 import React from "react";
 import { toast } from "react-toastify";
-// import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
 
 const Order = ({ details, index, refetch }) => {
   // const [user, loading, error] =useAuthState(auth)
@@ -19,7 +17,7 @@ const Order = ({ details, index, refetch }) => {
   const handleCancelOrder = () => {
     const proceed = window.confirm("Are You sure delete this order?");
     if (proceed) {
-      fetch(`http://localhost:5000/orderCancel/${_id}`, {
+      fetch(`https://rocky-peak-58572.herokuapp.com/orderCancel/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

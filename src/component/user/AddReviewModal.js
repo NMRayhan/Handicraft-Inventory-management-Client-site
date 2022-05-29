@@ -10,7 +10,7 @@ const AddReviewModal = () => {
   const [productName, setProductName] = useState("");
   const [rating, setRating] = useState('');
   useEffect(() => {
-    const url = "http://localhost:5000/products";
+    const url = "https://rocky-peak-58572.herokuapp.com/products";
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProducts(data));
@@ -36,7 +36,7 @@ const AddReviewModal = () => {
       reviewPhoto: photoURL,
     };
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://rocky-peak-58572.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

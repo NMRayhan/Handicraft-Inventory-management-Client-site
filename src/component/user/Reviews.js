@@ -14,7 +14,7 @@ const Reviews = () => {
     isLoading,
     refetch,
   } = useQuery("reviews", () =>
-    fetch(`http://localhost:5000/review/${user?.email}`).then((res) =>
+    fetch(`https://rocky-peak-58572.herokuapp.com/review/${user?.email}`).then((res) =>
       res.json()
     )
   );
@@ -22,7 +22,7 @@ const Reviews = () => {
   const HandleDeleteReview = (id) => {
     const proceed = window.confirm("Are You sure want to delete this review?");
     if (proceed) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://rocky-peak-58572.herokuapp.com/review/${id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())

@@ -10,7 +10,7 @@ const ManageOrder = () => {
   const [orders, setOrders] = useState([]);
   const [admin] = useAdmin(user)
   useEffect(() => {
-    fetch(`http://localhost:5000/allOrders`)
+    fetch(`https://rocky-peak-58572.herokuapp.com/allOrders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [admin]);

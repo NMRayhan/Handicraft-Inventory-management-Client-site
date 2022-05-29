@@ -29,7 +29,7 @@ const AddProduct = () => {
       img,
     };
     console.log(product);
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://rocky-peak-58572.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",

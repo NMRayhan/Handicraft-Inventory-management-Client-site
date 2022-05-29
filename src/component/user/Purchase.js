@@ -13,7 +13,7 @@ const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `http://localhost:5000/purchase/${_id}`;
+    const url = `https://rocky-peak-58572.herokuapp.com/purchase/${_id}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProduct(data));
@@ -49,7 +49,7 @@ const Purchase = () => {
       productId,
     };
 
-    const url = `http://localhost:5000/purchase`;
+    const url = `https://rocky-peak-58572.herokuapp.com/purchase`;
     fetch(url, {
       method: "POST",
       headers: {
