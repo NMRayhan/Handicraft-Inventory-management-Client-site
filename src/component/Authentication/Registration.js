@@ -30,12 +30,11 @@ const Registration = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  // useEffect(() => {
-    
-  // }, [token,from, navigate]);
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token,from, navigate]);
 
   if (loading || updating) {
     return <Spinner />;
@@ -44,10 +43,12 @@ const Registration = () => {
   if (error1 || error2) {
     toast.error(error1.message || error2.message);
   }
+
   const onSubmit = async (data) => {
     const displayName = data.name;
     const email = data.email;
     const password = data.password;
+    console.log(displayName, email, password);
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName });
   };

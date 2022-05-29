@@ -21,11 +21,9 @@ const Reviews = () => {
 
   const HandleDeleteReview = (id) => {
     const proceed = window.confirm("Are You sure want to delete this review?");
-    if (!proceed) {
-      return;
-    } else {
+    if (proceed) {
       fetch(`http://localhost:5000/review/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
       })
         .then((response) => response.json())
         .then((data) => {

@@ -21,13 +21,11 @@ const Login = () => {
 
   const [token] = useToken(user);
 
-  // useEffect(() => {
-    
-  // }, [token, from, navigate]);
-
-  if (token) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {

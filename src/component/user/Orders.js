@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import Spinner from "../common/Spinner";
 import Order from "./Order";
 
 const Orders = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const [orders, setOrders] = useState([]);
+  const [user, loading, error1] = useAuthState(auth);
 
-  useEffect(() => {
-    const url = `http://localhost:5000/orders/${user?.email}`;
-    fetch(url,{
-      method:"GET"
-    })
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, [user.email]);
+  const {
+    isLoading,
+    error,
+    refetch,
+    data
+  } = useQuery("repoData", () =>
+    fetch(`http://localhost:5000/orders/${user?.email}`, {
+      method: "GET",
+    }).then((res) => res.json())
+  );
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Spinner />;
   }
 
-  if (error) {
+  if (error || error1) {
     console.log(error?.message);
   }
   return (
     <div>
-      <h2 className="text-primary text-2xl">Total Order : {orders.length}</h2>
+      <h2 className="text-primary text-2xl">Total Order : {data.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
           <thead>
@@ -44,8 +46,13 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, index) => (
-              <Order key={order._id} index={index} details={order} />
+            {data.map((order, index) => (
+              <Order
+                key={order._id}
+                index={index}
+                details={order}
+                refetch={refetch}
+              />
             ))}
           </tbody>
         </table>

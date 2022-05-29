@@ -1,6 +1,10 @@
 import React from "react";
+import { toast } from "react-toastify";
+// import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
-const Order = ({ details, index }) => {
+const Order = ({ details, index, refetch }) => {
+  // const [user, loading, error] =useAuthState(auth)
   const {
     customer_name,
     customer_email,
@@ -11,9 +15,24 @@ const Order = ({ details, index }) => {
     shippingAddress,
     _id,
   } = details;
+
+  const handleCancelOrder = () => {
+    const proceed = window.confirm("Are You sure delete this order?");
+    if (proceed) {
+      fetch(`http://localhost:5000/orderCancel/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          refetch();
+          toast.success("Order Delete Successfully Done");
+        });
+    }
+  };
+
   return (
     <tr>
-      <th>{index+=1}</th>
+      <th>{(index += 1)}</th>
       <td>{customer_name}</td>
       <td>{customer_email}</td>
       <td>{customer_phone}</td>
@@ -22,7 +41,11 @@ const Order = ({ details, index }) => {
       <td>{price}</td>
       <td>{shippingAddress}</td>
       <td>{_id}</td>
-      <td><button className="btn btn-error btn-sm">Cancel Order</button></td>
+      <td>
+        <button className="btn btn-error btn-sm" onClick={handleCancelOrder}>
+          Delete Order
+        </button>
+      </td>
     </tr>
   );
 };
