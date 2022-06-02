@@ -4,11 +4,12 @@ import auth from "../../firebase.init";
 import Spinner from "../common/Spinner";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import ProductRow from "./ProductRow";
+import UpdateProduct from "./UpdateProduct";
 
 const ManageProducts = () => {
   const [user, loading] = useAuthState(auth);
   const [products, setProducts] = useState([]);
-  const [productDeleting, setProductDeleting] = useState(null);
+  const [productDetails, setProductDetails] = useState(null);
 
   useEffect(() => {
     fetch(`https://rocky-peak-58572.herokuapp.com/products/${user.email}`)
@@ -42,16 +43,23 @@ const ManageProducts = () => {
               key={pd._id}
               index={index}
               details={pd}
-              setProductDeleting={setProductDeleting}
+              setProductDetails={setProductDetails}
             />
           ))}
         </tbody>
       </table>
-      {productDeleting && (
+      {productDetails && (
         <DeleteConfirmModal
-          details={productDeleting}
-          key={productDeleting._id}
-          setProductDeleting={setProductDeleting}
+          details={productDetails}
+          key={productDetails._id}
+          setProductDetails={setProductDetails}
+        />
+      )}
+      {productDetails && (
+        <UpdateProduct
+          details={productDetails}
+          key={productDetails._id}
+          setProductDetails={setProductDetails}
         />
       )}
     </div>

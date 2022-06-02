@@ -7,7 +7,7 @@ import Spinner from "../common/Spinner";
 const AddProduct = () => {
   const [user, loading] = useAuthState(auth);
   const handleSubmitAdd = (e) => {
-    const imageDB_API_Key = `7e411a53cb33bd888f58071eabce8e4e`;
+    const CLIENT_API_KEY = `7e411a53cb33bd888f58071eabce8e4e`;
     e.preventDefault();
     const admin_name = e.target.admin_email.value;
     const admin_email = e.target.admin_name.value || "admin";
@@ -20,7 +20,7 @@ const AddProduct = () => {
     const imgURL = e.target.img.files[0];
     formData.append("image", imgURL);
 
-    const url = `https://api.imgbb.com/1/upload?key=${imageDB_API_Key}`;
+    const url = `https://api.imgbb.com/1/upload?key=${CLIENT_API_KEY}`;
     fetch(url, {
       method: "POST",
       body: formData,
