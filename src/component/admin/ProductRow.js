@@ -33,9 +33,9 @@ const ProductRow = ({ details, index, setProductDetails }) => {
       </td>
       <td>
         {status ? (
-          <input type="checkbox" checked className="toggle toggle-primary" />
+          "Published"
         ) : (
-          <input type="checkbox" className="toggle toggle-primary" />
+          "unPublished"
         )}
       </td>
     </tr>

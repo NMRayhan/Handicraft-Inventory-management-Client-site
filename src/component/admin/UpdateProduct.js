@@ -45,7 +45,7 @@ const UpdateProduct = ({ details, setProductDetails }) => {
             status: data.status,
           };
 
-          fetch(`http://localhost:5000/update_Product/${_id}`, {
+          fetch(`https://rocky-peak-58572.herokuapp.com/update_Product/${_id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
